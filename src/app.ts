@@ -21,12 +21,16 @@ app.use('/api/v1',router);
 // };
 
 
-const test = (req: Request, res: Response) => {
-  const a = 10;
+// const test = (req: Request, res: Response) => {
+//   const a = 10;
 
-  res.send(a);
-};
-app.get('/', test);
+//   res.send(a);
+// };
+// app.get('/', test);
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("server is running...");
+});
 
 console.log(process.cwd());
 

@@ -38,7 +38,7 @@ const createStudent = catchAsync(async (req, res,next) => {
     // const zodParseData=studentValidationSchema.parse(studentData)
 
     const result = await UserServices.createStudentIntoDB(password,studentData);
-
+console.log('please give a',password,studentData,result)
     // res.status(200).json({
     //   success: true,
     //   message: 'Student create is successfully',

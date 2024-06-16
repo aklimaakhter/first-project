@@ -36,8 +36,10 @@ export type TStudent = {
   permanentAddress: string;
   guardian: TGuardian;
   localGuardian: TLocalGuardian;
-  dateOfBirth?: string;
+  dateOfBirth?: Date;
   profileImg?: string;
+  admissionSemester:Types.ObjectId;
+  academicDepartment:Types.ObjectId;
   isDeleted:boolean;
 };
 

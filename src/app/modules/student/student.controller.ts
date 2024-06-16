@@ -24,7 +24,7 @@ const getSingleStudent= catchAsync(async (req, res, next) => {
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Students are retrieved successfully',
+      message: 'Students is retrieved successfully',
       data: result
 
     })

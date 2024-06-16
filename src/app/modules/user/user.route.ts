@@ -5,13 +5,13 @@ import { AnyZodObject } from 'zod';
 import validateRequest from '../../middleware/validateRequest';
 import { studentValidations } from '../student/student.validation';
 
-// import studentValidationSchema from '../student/student.validation';
+
 
 
 
 const router = express.Router();
 
-router.post('/create-student', validateRequest(studentValidations.studentValidationSchema), UserControllers.createStudent);
+router.post('/create-student', validateRequest(studentValidations.createStudentValidationSchema), UserControllers.createStudent);
 
 
 export const UserRoutes = router;
