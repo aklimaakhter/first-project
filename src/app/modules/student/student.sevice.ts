@@ -1,3 +1,5 @@
+import httpStatus from 'http-status';
+import AppError from '../../errors/AppError';
 import { TStudent } from './student.interface';
 import { Student } from './student.model';
 
@@ -6,7 +8,7 @@ const createStudentIntoDB = async (studentData: TStudent) => {
 
   // static method
   if(await Student.isUserExists(studentData.id)){
-    throw new Error(`User already exists!`)
+    throw new AppError(httpStatus.NOT_FOUND,`User already exists!`)
   }
   
   const result = await Student.create(studentData);
