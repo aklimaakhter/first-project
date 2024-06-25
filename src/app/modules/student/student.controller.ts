@@ -119,7 +119,7 @@ const deletedStudent = catchAsync(async (req, res, next) => {
   
     const { studentId } = req.params;
 
-    const result = await StudentServices.getSingleStudentFromDB(studentId);
+    const result = await StudentServices.deleteStudentFromDB(studentId);
 
     // res.status(200).json({
     //   success: true,
@@ -130,7 +130,7 @@ const deletedStudent = catchAsync(async (req, res, next) => {
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Students are retrieved successfully',
+      message: 'Students are deleted successfully',
       data: result
 
     })

@@ -37,24 +37,32 @@ const getAllStudentsFromDB = async () => {
   return result;
 };
 
+
+// findOne = generated Id
 const getSingleStudentFromDB = async (id: string) => {
-  // const result = await Student.findOne({ id });
-  const result = await Student.findById({ _id: id }).populate({
-    path: 'academicDepartment',
-    populate: {
-      path: 'academicFaculty'
-    }
-  })
+  console.log(id)
+  const result = await Student.findOne({ id }).populate({
+      path: 'academicDepartment',
+      populate: {
+        path: 'academicFaculty'
+      }
+    });
+  // const result = await Student.findById(id).populate({
+  //   path: 'academicDepartment',
+  //   populate: {
+  //     path: 'academicFaculty'
+  //   }
+  // })
   return result;
 };
 
 const deleteStudentFromDB = async (id: string) => {
-
+console.log(id)
   const session = await mongoose.startSession();
   try {
 
     session.startTransaction();
-    const deletedStudent = await Student.findByIdAndUpdate(
+    const deletedStudent = await Student.findOneAndUpdate(
       { id },
       { isDeleted: true },
       { new: true, session }
@@ -64,7 +72,7 @@ const deleteStudentFromDB = async (id: string) => {
       throw new AppError(httpStatus.BAD_REQUEST, "Failed to deleted student")
     }
 
-    const deletedUser = await User.findByIdAndUpdate(
+    const deletedUser = await User.findOneAndUpdate(
       { id },
       { isDeleted: true },
       { new: true, session }
@@ -78,9 +86,10 @@ const deleteStudentFromDB = async (id: string) => {
 
 
     return deletedStudent;
-  } catch (err) {
+  } catch (err:any) {
     await session.abortTransaction();
     await session.endSession()
+    throw new AppError(httpStatus.BAD_REQUEST, err)
   }
 }
 
