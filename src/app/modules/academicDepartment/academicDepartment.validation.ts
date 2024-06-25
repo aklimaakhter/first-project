@@ -34,16 +34,16 @@ const updateAcademicDepartmentValidationSchema=z.object({
     
     
 })
-const updateAcademicFacultyValidationSchema=z.object({
+// const updateAcademicFacultyValidationSchema=z.object({
    
-    body:z.object({
-     name:z.string({
-         invalid_type_error: "Name must be a string",
-     })
-    })
+//     body:z.object({
+//      name:z.string({
+//          invalid_type_error: "Name must be a string",
+//      })
+//     })
      
      
- })
+//  })
 
 export const academicDepartmentValidation={
     createAcademicDepartmentValidationSchema,
